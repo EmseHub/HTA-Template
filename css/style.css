@@ -1,0 +1,261 @@
+body {
+    font-size: 10pt;
+    font-family: "Segoe UI", Calibri, Arial, Sans-Serif;
+    background-color: #212121;
+    color: #ffffff;
+    padding: 15px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    border-collapse: collapse;
+}
+
+hr {
+    margin: 0px 0px;
+    color: #424242;
+}
+
+a {
+    color: #36df77;
+}
+
+h1 {
+    font-size: 14pt;
+    display: inline;
+}
+
+button {
+    display: inline;
+    cursor: pointer;
+    background-color: #2e2e2e;
+    background-color: #363636;
+    border-color: #212121;
+    color: #36df77;
+    height: 35px;
+    height: 38px;
+    margin: 0px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.label-checkbox {
+    display: inline;
+    margin: 0px;
+}
+
+input,
+select {
+    vertical-align: middle;
+    color: black;
+}
+
+/* --------------------------Mode-------------------------- */
+#container-mode .radio {
+    display: inline;
+    width: 10px;
+    margin: 0px 2px 0px 10px;
+    padding: 0px;
+    vertical-align: middle;
+    font-size: 8pt;
+}
+
+#container-mode .label-radio {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    font-size: 8pt;
+}
+
+/* --------------------------XYZ-------------------------- */
+#container-xyz {
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+
+#container-xyz label {
+    font-size: 10pt;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#container-xyz input {
+    height: 20pt;
+    font-size: 10pt;
+    padding: 4px 6px 3px 6px;
+    width: 100%;
+    border-right: 0px;
+}
+
+#container-xyz button {
+    height: 31px;
+    margin: 0;
+    border-left: 0px;
+}
+
+/* --------------------------Search-------------------------- */
+#container-search {
+    margin: 0px 0;
+}
+
+#container-search label {
+    font-size: 10pt;
+    vertical-align: middle;
+    height: 22px;
+    line-height: 22px;
+    padding: 0px 0px;
+}
+
+#container-search input {
+    font-size: 10pt;
+    margin: 0px 4px;
+    vertical-align: middle;
+}
+
+#container-search input {
+    padding: 1px 4px;
+    width: 250px;
+}
+
+/* --------------------------Elements-------------------------- */
+#container-elements {
+    overflow: auto;
+    height: 100%;
+}
+
+#container-elements p {
+    font-size: 12pt;
+    color: #36df77;
+    margin-top: 5px;
+}
+
+#container-elements table {
+    white-space: pre;
+}
+
+#container-elements th,
+#container-elements td {
+    text-align: left;
+}
+
+#container-elements th {
+    border-collapse: collapse;
+    padding: 0px;
+    padding-bottom: 10px;
+    font-size: 12pt;
+    color: #36df77;
+}
+
+#container-elements td {
+    border-bottom: 1px solid #0d5428;
+    padding: 0px;
+    font-size: 10pt;
+    vertical-align: top;
+}
+
+#container-elements label {
+    margin: 0px;
+    padding: 0px;
+    font-size: 10pt;
+    cursor: pointer;
+    white-space: pre;
+    vertical-align: middle;
+}
+
+#container-elements tfoot {
+    color: #36df77;
+    line-height: 20pt;
+
+}
+
+#container-elements tfoot td {
+    font-size: 8pt;
+    border: 0px;
+}
+
+.td-new-name {
+    color: #36df77;
+}
+
+.td-checkbox {
+    width: 30px;
+    height: 20px;
+    vertical-align: top;
+}
+
+.td-btns {
+    text-align: right;
+    padding: 0px;
+    margin: 0px;
+    border-collapse: collapse;
+    border: 0px;
+    width: 33px;
+}
+
+.btn-customsort {
+    height: 20px;
+    width: 16px;
+    padding: 0;
+    margin: 0;
+    border-width: 1px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 17px;
+}
+
+/* --------------------------Buttons-------------------------- */
+#container-btns {
+    clear: both;
+}
+
+#container-btns button {
+    margin: 5px 5px 0 0;
+}
+
+
+/* --------------------------Farben-------------------------- */
+.txt-primary {
+    color: #36df77;
+}
+
+.txt-secondary {
+    color: #0d5428;
+}
+
+.txt-success {
+    color: #03dac6;
+}
+
+.txt-error {
+    color: #cf6679;
+}
+
+.bg-primary {
+    background-color: #36df77;
+}
+
+.bg-secondary {
+    background-color: #0d5428;
+}
+
+.bg-success {
+    background-color: #03dac6;
+}
+
+.bg-error {
+    background-color: #cf6679;
+}

@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <hta:application ApplicationName="My Template" Id="Template" Version="0.0.0" Icon="img/template.ico" Border="Thick" BorderStyle="Normal" Caption="Yes" ContextMenu="Yes" MaximizeButton="Yes" MinimizeButton="Yes" Navigable="Yes"
+        Scroll="Yes" Selection="Yes" ShowInTaskbar="Yes" SingleInstance="Yes" SysMenu="Yes" WindowState="Normal">
+        <title>Template</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script language="JavaScript" src="libs/json2.js"></script>
+        <script language="JavaScript" src="js/polyfills.js"></script>
+        <script language="JavaScript" src="js/helpers.js"></script>
+        <script language="JavaScript" src="js/functions.js"></script>
+        <script language="JavaScript">
+            window.onload = function () {
+                loadSettings();
+                document.getElementById('span-version').innerText = Template.Version;
+
+
+
+                document.getElementById('container-elements').innerHTML = getHtmlElements() ;
+
+
+
+                document.getElementById('input-xyz').value = getClipboardText() || 'Hallo' ;
+                document.getElementById('input-xyz').focus();     
+            };
+
+            window.onbeforeunload = function (event) {
+                writeSettings();
+            }
+        </script>
+</head>
+
+<body>
+    <table height=100%>
+        <tr>
+            <td colspan="2" style="vertical-align: top;">
+                <div style="margin-right: 4px;">
+                    <span id="span-heading" style="float: left;">
+                        <h1>Template</h1>
+                        <span style="font-size: 10pt; margin-left: 7px;">v<span id="span-version">0.0.0</span></span>
+                    </span>
+                    <div id="container-mode" style="float: right; margin-top: 5px;">
+                        <span style="font-size: 8pt; vertical-align: middle;">Modus</span>
+                        <input type="radio" class="radio" id="radio-mode-files" name="mode" value="files" checked onclick="">
+                        <label class="label-radio" for="radio-mode-files">Some</label>
+                        <input type="radio" class="radio" id="radio-mode-subfolders" name="mode" value="subfolders" onclick="">
+                        <label class="label-radio" for="radio-mode-subfolders">Thing</label>
+                    </div>
+                </div>
+                <div id="container-xyz">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="width: 100%;">
+                                <input type="text" id="input-xyz" onkeyup="handleKeyupInput(event)">
+                            </td>
+                            <td>
+                                <button type="button" onclick="">Jetzt beginnen</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="container-renderA">Platzhalter</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>TD 1</div>
+            </td>
+            <td style="vertical-align:bottom; text-align: right;">
+                <div>TD 2</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="container-search">
+                    <label for="input-search">Bla bla</label>
+                    <input type="text" id="input-search" onkeyup="handleKeyupSearch()" onmouseup="handleKeyupSearch()">
+                    <label for="input-search">blu blu (okay)</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr>
+            </td>
+        </tr>
+        <tr style="height: 100%; vertical-align: top;">
+            <td colspan="2">
+                <div id="container-elements"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="container-btns">
+                    <div style="float: left;">
+                        <button type="button">Importieren</button>
+                    </div>
+                    <div style="float: right;">
+                        <button type="button" onclick="window.close();" disabled>Nicht verf&uuml;gbar</button>
+                        <button type="button" onclick="window.close();">Schlie&szlig;en</button>
+                        <button type="button" style="margin-right: 0px;" onclick="window.close();">Ausf&uuml;hren/Whatever</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
