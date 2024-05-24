@@ -1,12 +1,14 @@
 {
     "html.format.wrapLineLength": 240,
-    "[javascript]": {
-        "editor.formatOnSave": true
-    },
     "files.associations": {
         "*.hta": "html"
     },
     "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    }    
+        "editor.defaultFormatter": "vscode.html-language-features",
+        "editor.formatOnSave": true
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.formatOnSave": true
+    }
 }

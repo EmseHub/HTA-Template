@@ -16,12 +16,45 @@
 
 
 
-                document.getElementById('container-elements').innerHTML = getHtmlElements() ;
+                document.getElementById('container-elements').innerHTML = getHtmlElements();
 
 
 
-                document.getElementById('input-xyz').value = getClipboardText() || 'Hallo' ;
-                document.getElementById('input-xyz').focus();     
+                document.getElementById('input-xyz').value = getClipboardText() || 'Hallo';
+                document.getElementById('input-xyz').focus();
+
+
+
+
+
+                // ------ HTTP EXAMPLES ------
+
+                // httpGetRequest("https://jsonplaceholder.typicode.com/users", true, function (cbResponse) {
+                //     alert(cbResponse);
+                // });
+
+                // getWebsiteDocument("https://de.wikipedia.org/wiki/Siegener_Versorgungsbetriebe", function (cbDocument) {
+                //     var result = cbDocument.getElementsByTagName('title');
+                //     for (var i = 0; i < result.length; i++) {
+                //         alert(result[i].innerHTML);
+                //     }
+                // });
+
+
+
+                // ------ EXTRACTION EXAMPLES ------
+                var text = '<div>Hallo wie <div> geht es dir</DIV> heute <div>so?</div>';
+                var arrExtractsSimple = extractValuesInSyntax(text, '<div>', '</div>', false);
+                showPopupInfo('extractsSimple:\n' + arrExtractsSimple);
+
+
+                text = '<h1>Das ist die Hauptüberschrift</h1><div>Irgendein Kram</div><h2>Nächste Überschrift die <em>etwas</em>enthält</h2><p>Abschnitt<p><h2>Noch eine</h2>';
+                var arrStartEndPairs = [
+                    ['<h1>', '</h1>'],
+                    ['<h2>', '</h2>']
+                ];
+                var arrExtractsMultiple = extractValuesInMultipleSyntaxes(text, arrStartEndPairs, false);
+                showPopupInfo('extractsMultiple:\n' + arrExtractsMultiple);
             };
 
             window.onbeforeunload = function (event) {

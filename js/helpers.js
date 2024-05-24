@@ -29,6 +29,32 @@ function cleanTextForPopup(str) {
         .replace(/ß/g, '%DF')
     );
 }
+
+function escapeRegExp(strText) {
+    return strText.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&'); // $& means the whole matched string
+    return strText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function extractValuesInSyntax(strText, strStart, strEnd, isCaseSensitive) {
+    var flag = isCaseSensitive ? 'g' : 'gi';
+    var regex = new RegExp((escapeRegExp(strStart) + '(.*?)' + escapeRegExp(strEnd)), flag);
+    var arrValues = [];
+    var match = regex.exec(strText);
+    while (match !== null) {
+        arrValues.push(match[1])
+        match = regex.exec(strText);
+    }
+    return arrValues;
+}
+
+function extractValuesInMultipleSyntaxes(strText, arrStartEndPairs, isCaseSensitive) {
+    var arrValues = [];
+    while (arrStartEndPairs.length > 0) {
+        var startEndPair = arrStartEndPairs.shift();
+        arrValues = arrValues.concat(extractValuesInSyntax(strText, startEndPair[0], startEndPair[1], isCaseSensitive));
+    }
+    return arrValues;
+}
 //#endregion -------------------------- STRINGS --------------------------
 
 
@@ -253,6 +279,59 @@ function loadSettings(defaultWidth, defaultHeight, minWidth, minHeight) {
 
 }
 //#endregion -------------------------- APPLICATION SETTINGS --------------------------
+
+
+
+
+//#region -------------------------- HTTP-REQUESTS --------------------------
+function httpGetRequest(url, parseJson, callback) {
+    if (!url) { return null; }
+
+    var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    // var xhr = new XMLHttpRequest();
+
+    // xhr.onload = function () { alert('onload'); };
+    // xhr.onprogress = function (event) { alert('onprogress'); };
+    // xhr.onerror = function () { alert('onerror'); };
+
+    xhr.onreadystatechange = function () {
+        // Return if request isn't complete yet
+        if (xhr.readyState !== 4) { return; }
+
+        // Process our return data
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // var data = xhr.response;
+            var responseText = xhr.responseText;
+            callback((parseJson) ? JSON.parse(responseText) : responseText);
+        }
+        else {
+            alert('Error: xhr.status = ' + xhr.status);
+            callback(null);
+        }
+    };
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open
+    xhr.open('GET', url);
+    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
+    // xhr.responseType = 'text';
+    xhr.send();
+}
+
+function getWebsiteDocument(url, funcToDoWithDocument) {
+    httpGetRequest(url, false, function (cbResponseText) {
+        var iframe = document.createElement('iframe');
+        document.body.appendChild(iframe);
+        iframe.contentWindow.document.open();
+        iframe.contentWindow.document.write(cbResponseText);
+        iframe.contentWindow.document.close();
+        var websiteDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+        funcToDoWithDocument(websiteDocument); // e.g. websiteDocument.getElementById('xyz').textContent;
+
+        document.body.removeChild(iframe);
+    });
+}
+//#endregion -------------------------- HTTP-REQUESTS --------------------------
 
 
 
